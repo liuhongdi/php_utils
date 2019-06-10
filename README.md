@@ -35,3 +35,11 @@ anti_sql_injection.php功能：
 
 对接收到的参数进行过滤，避免sql注入等安全问题
 
+tar_file.php功能：
+
+把文件打包进tar文件 
+
+is_process_running.php功能:
+
+判断一个程序是否正在执行?
+
