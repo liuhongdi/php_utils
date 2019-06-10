@@ -17,7 +17,7 @@ class emoji_for_not_utf8mb4
 {
      // construct
      public function __construct(){
-         //$this->link = $link;
+
      }
 
     /*
@@ -30,15 +30,13 @@ class emoji_for_not_utf8mb4
 
     public function str_to_emoji($str){
 
-        preg_match_all('/\[\[EMOJI:(.*?)\]\]/',$str,$arr_content);//过滤掉emoji表情
-//print_r($arr_content);
+        preg_match_all('/\[\[EMOJI:(.*?)\]\]/',$str,$arr_content);
+
         foreach($arr_content[0] as $k=>$v){
 
-            //echo "v:".$v.":<br/>";
             $emoji = $this->str2emoji($v);
 
             $str = str_replace($v,$emoji,$str);
-            //return $content;
         }
 
         return $str;
@@ -48,11 +46,10 @@ class emoji_for_not_utf8mb4
 
     private function str2emoji($str) {
 
-        //echo "orig:".$str.":<br/>";
         $str = str_replace("[[EMOJI:", "", $str);
         $str = str_replace("]]", "", $str);
         $emoji = rawurldecode($str);
-        //echo "str:".$emoji.":<br/>";
+
         return $emoji;
     }
 
@@ -71,11 +68,8 @@ class emoji_for_not_utf8mb4
         for ($i=0; $i < $length; $i++) {
             $_tmpStr = mb_substr($emoji_string,$i,1,'utf-8');
             if(strlen($_tmpStr) >= 4){
-                //echo "is_emoji:<br/>";
                 $strEncode .= '[[EMOJI:'.rawurlencode($_tmpStr).']]';
-
             }else{
-                //echo "is_emoji:<br/>";
                 $strEncode .= $_tmpStr;
             }
         }
